@@ -2,7 +2,7 @@ import * as bip39 from "bip39";
 import * as EthUtil from "ethereumjs-util";
 import ethJSWallet from "ethereumjs-wallet";
 import EthereumHDKey from "ethereumjs-wallet/hdkey";
-import Transaction from "ethereumjs-tx";
+import Transaction from "pchainjs-tx";
 import ProviderEngine from "web3-provider-engine";
 import FiltersSubprovider from "web3-provider-engine/subproviders/filters";
 import NonceSubProvider from "web3-provider-engine/subproviders/nonce-tracker";
@@ -33,11 +33,11 @@ class HDWalletProvider {
   constructor(
     mnemonic: string | string[],
     provider: string | any,
+    chainId: string,
     addressIndex: number = 0,
     numAddresses: number = 1,
     shareNonce: boolean = true,
-    walletHdpath: string = `m/44'/60'/0'/0/`,
-    chainId: string
+    walletHdpath: string = `m/44'/60'/0'/0/`
   ) {
     this.walletHdpath = walletHdpath;
     this.wallets = {};
@@ -127,6 +127,7 @@ class HDWalletProvider {
           } else {
             cb("Account not found");
           }
+          txParams.chainId = chainId;
           const tx = new Transaction(txParams);
           tx.sign(pkey as Buffer);
           const rawTx = `0x${tx.serialize().toString("hex")}`;
