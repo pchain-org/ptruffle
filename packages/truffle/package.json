@@ -2,12 +2,12 @@
   "name": "ptruffle",
   "description": "Truffle - Simple development framework for Ethereum",
   "author": "consensys.net",
-  "homepage": "https://github.com/trufflesuite/truffle/",
-  "repository": "https://github.com/trufflesuite/truffle/tree/master/packages/truffle",
+  "homepage": "https://github.com/pchain-org/ptruffle/",
+  "repository": "https://github.com/pchain-org/ptruffle/tree/master/packages/truffle",
   "bugs": {
-    "url": "https://github.com/trufflesuite/truffle/issues"
+    "url": "https://github.com/pchain-org/ptruffle/issues"
   },
-  "version": "5.0.41",
+  "version": "5.0.42",
   "main": "./build/library.bundled.js",
   "bin": {
     "truffle": "./build/cli.bundled.js"

@@ -1,12 +1,12 @@
 {
-  "name": "@truffle/hdwallet-provider",
+  "name": "@ptruffle/hdwallet-provider",
   "description": "HD Wallet-enabled Web3 provider",
   "license": "MIT",
   "author": "Tim Coulter <tim.coulter@consensys.net>",
-  "homepage": "https://github.com/trufflesuite/truffle/tree/master/packages/hdwallet-provider#readme",
-  "repository": "https://github.com/trufflesuite/truffle/tree/master/packages/hdwallet-provider",
+  "homepage": "https://github.com/pchain-org/ptruffle/tree/master/packages/hdwallet-provider#readme",
+  "repository": "https://github.com/pchain-org/ptruffle/tree/master/packages/hdwallet-provider",
   "bugs": {
-    "url": "https://github.com/trufflesuite/truffle/issues"
+    "url": "https://github.com/pchain-org/ptruffle/issues"
   },
   "version": "1.0.22",
   "main": "dist/index.js",
