@@ -26,8 +26,7 @@ Truffle is a development environment, testing framework and asset pipeline for E
 
 ### Install
 
-| Please see the [Development](#development) section of this README. |
-| --- |
+Please see the [Development](#development) section of this README. 
 
 ### Quick Usage
 
