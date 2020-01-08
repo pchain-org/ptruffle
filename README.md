@@ -26,9 +26,8 @@ Truffle is a development environment, testing framework and asset pipeline for E
 
 ### Install
 
-```
-$ npm install -g truffle
-```
+| Please see the [Development](#development) section of this README. |
+| --- |
 
 ### Quick Usage
 
