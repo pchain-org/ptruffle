@@ -1,11 +1,11 @@
-import assert from 'assert';
-import Ganache from 'ganache-core';
-import * as EthUtil from 'ethereumjs-util';
-import Web3 from 'web3';
-import WalletProvider from '../dist';
-import { describe, it } from 'mocha';
+import assert from "assert";
+import Ganache from "ganache-core";
+import * as EthUtil from "ethereumjs-util";
+import Web3 from "web3";
+import WalletProvider from "../dist";
+import { describe, it } from "mocha";
 
-describe("HD Wallet Provider", function () {
+describe("HD Wallet Provider", function() {
   const web3 = new Web3();
   const port = 8545;
   let server: any;
@@ -21,11 +21,11 @@ describe("HD Wallet Provider", function () {
   });
 
   afterEach(() => {
-    web3.setProvider(new Web3.providers.HttpProvider('ws://localhost:8545'));
+    web3.setProvider(new Web3.providers.HttpProvider("ws://localhost:8545"));
     provider.engine.stop();
   });
 
-  it("provides for a mnemonic", function (done) {
+  it("provides for a mnemonic", function(done) {
     const truffleDevAccounts = [
       "0x627306090abab3a6e1400e9345bc60c78a8bef57",
       "0xf17f52151ebef6c7334fad080c5704d77216b732",
@@ -41,7 +41,13 @@ describe("HD Wallet Provider", function () {
 
     const mnemonic =
       "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat";
-    provider = new WalletProvider(mnemonic, `http://localhost:${port}`, 0, 10);
+    provider = new WalletProvider(
+      mnemonic,
+      `http://localhost:${port}`,
+      `pchain`,
+      0,
+      10
+    );
 
     assert.deepEqual(provider.getAddresses(), truffleDevAccounts);
     web3.setProvider(provider);
@@ -52,11 +58,12 @@ describe("HD Wallet Provider", function () {
     });
   });
 
-  it("throws on invalid mnemonic", function (done) {
+  it("throws on invalid mnemonic", function(done) {
     try {
       provider = new WalletProvider(
         "takoyaki is delicious",
         "http://localhost:8545",
+        `pchain`,
         0,
         1
       );
@@ -67,10 +74,14 @@ describe("HD Wallet Provider", function () {
     }
   });
 
-  it("provides for a private key", function (done) {
+  it("provides for a private key", function(done) {
     const privateKey =
       "3f841bf589fdf83a521e55d51afddc34fa65351161eead24f064855fc29c9580"; //random valid private key generated with ethkey
-    provider = new WalletProvider(privateKey, `http://localhost:${port}`);
+    provider = new WalletProvider(
+      privateKey,
+      `http://localhost:${port}`,
+      `pchain`
+    );
     web3.setProvider(provider);
 
     const addresses = provider.getAddresses();
@@ -85,7 +96,7 @@ describe("HD Wallet Provider", function () {
     });
   });
 
-  it("provides for an array of private keys", function (done) {
+  it("provides for an array of private keys", function(done) {
     const privateKeys = [
       "3f841bf589fdf83a521e55d51afddc34fa65351161eead24f064855fc29c9580",
       "9549f39decea7b7504e15572b2c6a72766df0281cea22bd1a3bc87166b1ca290"
@@ -101,6 +112,7 @@ describe("HD Wallet Provider", function () {
     provider = new WalletProvider(
       privateKeys,
       `http://localhost:${port}`,
+      `pchain`,
       0,
       privateKeys.length
     ); //pass in num_addresses to load full array
