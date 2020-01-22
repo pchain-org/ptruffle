@@ -54,9 +54,14 @@ We welcome pull requests. To get started, just fork this repo, clone it locally,
 
 ```shell
 # Install
+git clone https://github.com/pchain-org/ptruffle.git
+cd truffle
 npm install -g lerna@3.4.3
 npm install -g yarn
 yarn bootstrap
+# after this you will find truffle under dir ptruffle/packages/truffle/node_modules/.bin
+alias truffle='ptruffle/packages/truffle/node_modules/.bin/truffle'
+truffle --h
 
 # Test
 yarn test
